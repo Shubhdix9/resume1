@@ -53,7 +53,7 @@
         <section class="skills" id="skills">
             <h2 class="heading">My <span>Skills</span></h2>
             <div class="skills-container">
-                <div class="skill-box">
+                <div class="skill-box" onclick="openProject('python')">
                     <i class="fab fa-python"></i>
                     <h3>Python</h3>
                 </div>
@@ -85,7 +85,7 @@
                     <i class="fab fa-java"></i>
                     <h3>Java</h3>
                 </div>
-                <div class="skill-box">
+                <div class="skill-box" onclick="openProject('arduino')">
                     <i class="fas fa-microchip"></i>
                     <h3>Arduino UNO</h3>
                 </div>
@@ -253,7 +253,6 @@
 
         document.addEventListener('DOMContentLoaded', typeWriter); // Start animation on load
 
-
         // JavaScript for contact form (WhatsApp and Email)
         const contactForm = document.getElementById('contactForm');
         const messageBox = document.getElementById('messageBox');
@@ -315,6 +314,20 @@
 
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // New function to open projects from skill clicks
+        function openProject(skill) {
+            if (skill === 'python') {
+                // Scroll to the Spotify Listening Habits Analysis project
+                const spotifyProjectLink = document.querySelector('.project-box:nth-child(1) .project-links a:nth-child(1)'); // Targets the 'Report' link
+                if (spotifyProjectLink) {
+                    spotifyProjectLink.click(); // Programmatically clicks the link
+                }
+            } else if (skill === 'arduino') {
+                // Open the Arduino Project Drive link directly
+                window.open('https://drive.google.com/drive/u/8/folders/1V2OBlD11tKLA-TIQ-r92cpWsj5CXrmkS', '_blank');
+            }
+        }
     </script>
 </body>
 
