@@ -1,42 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Portfolio Website</title>
+    <title>Shubh Dixit - Portfolio</title>
 </head>
+
 <body>
     <header>
-        <a href="#" class="logo">SHUBH</a>
+        <a href="#home" class="logo" aria-label="Go to Home section">SHUBH</a>
 
-        <nav>
-            <a href="#" class="active"> Home</a>
-            <a href="#" >Services</a>
-            <a href="#" >Skills</a>
-            <a href="#" >Education</a>
-            <a href="#" >Experience</a>
-            <a href="#" >Contact</a>
+        <nav id="mainNav">
+            <a href="#home" class="active" aria-label="Home section">Home</a>
+            <a href="#skills" aria-label="Skills section">Skills</a>
+            <a href="#education" aria-label="Education section">Education</a>
+            <a href="#contact" aria-label="Contact section">Contact</a>
         </nav>
+
+        <div class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
-    <section class="home">
-        <div class="home-img">
-            <img src="shubh.jpeg" alt="">
-        </div>
-        <div class="home-content">
-            <h1>Hi, It's <span>SHUBH</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
-            <p>As a CSE engineering student from LPU, I recently built my personal website, showcasing my full-stack web development skills. I leveraged my expertise in Python, HTML, CSS, and JavaScript for the front-end and back-end, integrating MySQL for robust data management, and utilizing PHP for server-side functionalities. This project also demonstrates my foundational programming strengths in C, C++, and Java, proving my versatility as a developer.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+
+    <main>
+        <section class="home" id="home">
+            <div class="home-img">
+                <img src="shubh.jpg" alt="Shubh Dixit, a CSE engineering student" loading="lazy">
             </div>
-            <a href="#" class="btn">Hire Me</a>
-        </div>
-    </section>
+            <div class="home-content">
+                <h1>Hi, It's <span>Shubh Dixit</span></h1>
+                <h3 class="typing-text">I'm a <span></span></h3>
+                <p>As a CSE engineering student from LPU, I recently built my personal website, showcasing my full-stack web development skills. I leveraged my expertise in Python, HTML, CSS, and JavaScript for the front-end and back-end, integrating MySQL for robust data management, and utilizing PHP for server-side functionalities. This project also demonstrates my foundational programming strengths in C, C++, and Java, proving my versatility as a developer.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/feed/?trk=onboarding-landing" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Shubhdix9" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit X (Twitter) profile"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/shubh_dixit__/?igsh=MXh1Mm1seW81YjZo#" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram profile"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <a href="#contact" class="btn">Hire Me</a>
+            </div>
+        </section>
+
+        <section class="skills" id="skills">
+            <h2 class="heading">My <span>Skills</span></h2>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-box">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5</h3>
+                </div>
+                <div class="skill-box">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS3</h3>
+                </div>
+                <div class="skill-box">
+                    <i class="fab fa-js-square"></i>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-database"></i>
+                    <h3>MySQL</h3>
+                </div>
+                <div class="skill-box">
+                    <i class="fab fa-php"></i>
+                    <h3>PHP</h3>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-c"></i>
+                    <h3>C/C++</h3>
+                </div>
+                <div class="skill-box">
+                    <i class="fab fa-java"></i>
+                    <h3>Java</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="education" id="education">
+            <h2 class="heading">My <span>Education</span></h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>B.Tech in Computer Science Engineering</h3>
+                        <p>Lovely Professional University (LPU)</p>
+                        <span class="duration">Currently pursuing</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Class 12th (PCM)</h3>
+                        <p>St. Anselm's Senior Secondary School</p>
+                        <p>80% Percentage</p>
+                        <span class="duration">2021</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2 class="heading">Contact <span>Me!</span></h2>
+
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:shubhdixi9@gmail.com" aria-label="Email Shubh Dixit at shubhdixi9@gmail.com">shubhdixi9@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> Phone: <a href="tel:+916375488022" aria-label="Call Shubh Dixit at +91 6375488022">+91 6375488022</a></p>
+            </div>
+
+            <form id="contactForm">
+                <div class="input-box">
+                    <input type="text" id="fullName" placeholder="Full Name" required aria-label="Your Full Name">
+                    <input type="email" id="emailAddress" placeholder="Email Address" required aria-label="Your Email Address">
+                </div>
+                <div class="input-box">
+                    <input type="tel" id="mobileNumber" placeholder="Mobile Number" required aria-label="Your Mobile Number">
+                    <input type="text" id="emailSubject" placeholder="Email Subject" required aria-label="Subject of your email">
+                </div>
+                <textarea id="message" cols="30" rows="10" placeholder="Your Message" required aria-label="Your Message"></textarea>
+                <input type="submit" value="Send Message" class="btn">
+            </form>
+
+            <div id="messageBox" class="message-box" role="status" aria-live="polite"></div>
+
+        </section>
+    </main>
+
+    <script>
+        // JavaScript for mobile navigation toggle
+        const menuIcon = document.getElementById('menuIcon');
+        const mainNav = document.getElementById('mainNav');
+
+        menuIcon.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const isExpanded = mainNav.classList.contains('active');
+            menuIcon.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close nav when a link is clicked (for smooth scrolling)
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuIcon.setAttribute('aria-expanded', false);
+            });
+        });
+
+
+        // JavaScript for contact form (WhatsApp and Email)
+        const contactForm = document.getElementById('contactForm');
+        const messageBox = document.getElementById('messageBox');
+
+        function showMessage(message, type = 'info') {
+            messageBox.textContent = message;
+            messageBox.className = `message-box ${type}`;
+            messageBox.style.display = 'block';
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000);
+        }
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const emailAddress = document.getElementById('emailAddress').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const emailSubject = document.getElementById('emailSubject').value;
+            const message = document.getElementById('message').value;
+
+            const whatsappNumber = '916375488022';
+            const whatsappMessage = `Hello Shubh,\n\nName: ${fullName}\nEmail: ${emailAddress}\nPhone: ${mobileNumber}\n\nSubject: ${emailSubject}\nMessage: ${message}`;
+            const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedWhatsappMessage}`;
+
+            const yourEmail = 'shubhdixi9@gmail.com';
+            const emailBody = `Name: ${fullName}\nEmail: ${emailAddress}\nPhone: ${mobileNumber}\n\nMessage: ${message}`;
+            const encodedEmailSubject = encodeURIComponent(emailSubject);
+            const encodedEmailBody = encodeURIComponent(emailBody);
+            const mailtoUrl = `mailto:${yourEmail}?subject=${encodedEmailSubject}&body=${encodedEmailBody}`;
+
+            try {
+                window.open(whatsappUrl, '_blank');
+                window.open(mailtoUrl, '_blank');
+                showMessage('Your message is being prepared for WhatsApp and Email!', 'success');
+                contactForm.reset();
+            } catch (error) {
+                console.error("Error opening WhatsApp or Mailto:", error);
+                showMessage('Could not open WhatsApp or Email. Please try again.', 'error');
+            }
+        });
+    </script>
 </body>
+
 </html>
