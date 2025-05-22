@@ -324,29 +324,28 @@ section {
 
 .typing-text span::after {
     content: "";
-    background-color: black;
     position: absolute;
     width: calc(100% + 8px);
     height: 100%;
-    border-left: 3px solid black;
+    border-left: 3px solid rgb(255, 0, 0);
     right: -8px; /* Fixed unit to px */
     animation: cursor 0.6s infinite;
 }
 
 @keyframes cursor {
     to {
-        border-left: 3px solid #b74b4b;
+        border-left: 3px solid #f60404;
     }
 }
 
 @keyframes words {
     0%,
     20% {
-        content: "CSE Engineer";
+        content: "Student";
     }
     21%,
     40% {
-        content: "Software Development";
+        content: "CSE Engineer";
     }
     41%,
     60% {
@@ -354,11 +353,11 @@ section {
     }
     61%,
     80% {
-        content: "Youtuber";
+        content: "Developer";
     }
     81%,
     100% {
-        content: "CSE Engineer"; /* Loop back to the first word in the animation sequence */
+        content: "Ai Develpoer"; /* Loop back to the first word in the animation sequence */
     }
 }
 
