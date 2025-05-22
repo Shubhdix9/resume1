@@ -295,6 +295,13 @@ section {
     transform: scale(1.05);
 }
 
+/* Small Button for Projects */
+.small-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.4rem;
+    border-radius: 2rem;
+}
+
 /* Typing Text Animation */
 .typing-text {
     font-size: 3.4rem; /* Using rem units */
@@ -310,48 +317,48 @@ section {
 }
 
 .typing-text span::before {
-    content: "Software Developer"; /* Default content */
-    color: var(--primary-color);
+    content: "Student"; /* Updated content from user's snippet */
+    color: #b74b4b;
     animation: words 20s infinite;
 }
 
 .typing-text span::after {
     content: "";
-    background-color: var(--bg-color-dark);
+    background-color: black;
     position: absolute;
     width: calc(100% + 8px);
     height: 100%;
-    border-left: 3px solid var(--bg-color-dark);
-    right: -8px; /* Corrected unit */
+    border-left: 3px solid black;
+    right: -8px; /* Fixed unit to px */
     animation: cursor 0.6s infinite;
 }
 
 @keyframes cursor {
     to {
-        border-left: 3px solid var(--primary-color);
+        border-left: 3px solid #b74b4b;
     }
 }
 
 @keyframes words {
     0%,
     20% {
-        content: "Student";
+        content: "CSE Engineer";
     }
     21%,
     40% {
-        content: "CSE Engineer";
+        content: "Software Development";
     }
     41%,
     60% {
-        content: "Web Developer";
+        content: "Web Designer";
     }
     61%,
     80% {
-        content: "Software Developer";
+        content: "Youtuber";
     }
     81%,
     100% {
-        content: ""; /* Can loop back to "Student" if preferred */
+        content: "CSE Engineer"; /* Loop back to the first word in the animation sequence */
     }
 }
 
@@ -599,6 +606,73 @@ section {
     }
 }
 
+/* Projects Section Styles */
+.projects {
+    background-color: var(--bg-color-light); /* Lighter background for contrast */
+    padding: 8rem 9% 5rem;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.project-box {
+    background-color: var(--bg-color-dark);
+    border: 2px solid var(--primary-color);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    max-width: 450px; /* Max width for project card */
+    text-align: left; /* Align text left within the box */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push links to bottom */
+}
+
+.project-box:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px var(--primary-color);
+}
+
+.project-box h3 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.project-box p {
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-box .project-grade {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #e0e0e0;
+    margin-bottom: 2rem; /* Space before links */
+}
+
+.project-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: auto; /* Push to the bottom of the flex container */
+    flex-wrap: wrap; /* Allow links to wrap on small screens */
+}
+
+.project-links .btn {
+    display: inline-flex; /* Use inline-flex for icon alignment */
+    align-items: center;
+    gap: 0.8rem; /* Space between text and icon */
+}
+
 /* Contact Section Styles */
 .contact {
     background-color: var(--bg-color-light);
@@ -657,7 +731,7 @@ section {
 .contact textarea {
     width: 100%;
     padding: 1.8rem; /* Increased padding */
-    background: var(--bg-color-light); /* Lighter background for inputs */
+    background: var(--bg-color-dark); /* Lighter background for inputs */
     border: 1px solid var(--border-color);
     border-radius: 1rem; /* More rounded corners */
     color: var(--text-color);
@@ -744,7 +818,7 @@ section {
     }
 
     .home-img img {
-        width: 80vw;
+        width: 70vw;
     }
 
     .social-icons a {
@@ -770,5 +844,18 @@ section {
     .contact .input-box {
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .project-box {
+        padding: 2rem;
+    }
+
+    .project-box h3 {
+        font-size: 2rem;
+    }
+
+    .project-links {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 1rem;
     }
 }
