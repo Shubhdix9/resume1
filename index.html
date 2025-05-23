@@ -12,8 +12,11 @@
     <meta name="description" content="Portfolio of Shubh Dixit, a CSE engineering student and full-stack web developer specializing in Python, HTML, CSS, JavaScript, MySQL, PHP, C, C++, and Java. Explore projects and skills.">
     <meta property="og:title" content="Shubh Dixit - Portfolio">
     <meta property="og:description" content="Portfolio of Shubh Dixit, a CSE engineering student and full-stack web developer specializing in Python, HTML, CSS, JavaScript, MySQL, PHP, C, C++, and Java.">
-    <meta property="og:image" content="https://yourwebsite.com/shubh.jpg"> <meta property="og:url" content="https://yourwebsite.com"> <meta property="og:type" content="website">
-    <link rel="canonical" href="https://yourwebsite.com"> </head>
+    <meta property="og:image" content="https://yourwebsite.com/shubh.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://yourwebsite.com">
+</head>
 
 <body>
     <header>
@@ -24,6 +27,7 @@
             <a href="#skills" aria-label="Skills section">Skills</a>
             <a href="#education" aria-label="Education section">Education</a>
             <a href="#projects" aria-label="Projects section">Projects</a>
+            <a href="#certificates" aria-label="Certificates section">Certificates</a>
             <a href="#contact" aria-label="Contact section">Contact</a>
         </nav>
 
@@ -35,7 +39,8 @@
     <main>
         <section class="home" id="home">
             <div class="home-img">
-                <img src="shubh.jpg" alt="Professional headshot of Shubh Dixit" loading="eager"> </div>
+                <img src="shubh.jpg" alt="Professional headshot of Shubh Dixit" loading="eager">
+            </div>
             <div class="home-content">
                 <h1>Hi, It's <span>Shubh Dixit</span></h1>
                 <h3 class="typing-text">I'm a <span></span></h3>
@@ -148,8 +153,56 @@
                         <a href="https://drive.google.com/drive/u/8/folders/1V2OBlD11tKLA-TIQ-r92cpWsj5CXrmkS" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="Access Arduino Project Drive Folder">Access Drive <i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
+
+        {/* Certificates Section */}
+        <section class="certificates" id="certificates">
+            <h2 class="heading">My <span>Certificates</span></h2>
+            <div class="certificates-container">
+                <div class="certificate-box">
+                    <div class="certificate-info">
+                        <h3>Instagram Clone using Figma Workshop</h3>
+                        <p><strong>Day 1:</strong> Project Setup & Home Feed UI</p>
+                        <p>A 2-day project workshop on creating an Instagram Clone using Figma.</p>
+                        <p><strong>In collaboration with:</strong></p>
+                        <ul>
+                            <li>Google Developer Group MAD Mumbai</li>
+                            <li>National Skill Development Corporation</li>
+                            <li>ITM Group of Institutions</li>
+                            <li>LetsUpgrade</li>
+                        </ul>
+                        <p class="certificate-status">🤩 <strong>100% Program Completed</strong></p>
+                    </div>
+                    <div class="certificate-links">
+                        <a href="Instagram tune.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="View Instagram Figma Certificate">View Certificate <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+
+                {/* Java Bootcamp Certificate */}
+                <div class="certificate-box">
+                    <div class="certificate-info">
+                        <h3>Java Bootcamp</h3>
+                        <p>This is to certify that Shubh Dixit has successfully completed the Java Bootcamp. The program was conducted by LetsUpgrade in collaboration with National Skill Development Corporation (NSDC) and ITM Edutech Training Pvt. Ltd.[cite: 1, 2]. The bootcamp ran for 3 days, from April 30, 2025, to April 2, 2025[cite: 1].</p>
+                        <p><strong>In collaboration with:</strong></p>
+                        <ul>
+                            <li>LetsUpgrade [cite: 1]</li>
+                            <li>National Skill Development Corporation (NSDC) [cite: 1]</li>
+                            <li>ITM Edutech Training Pvt. Ltd. [cite: 2]</li>
+                            <li>GDG MAD (Google Developer Group MAD Mumbai) [cite: 1]</li>
+                        </ul>
+                        <p class="certificate-status">🤩 <strong>Program Completed</strong></p>
+                    </div>
+                    <div class="certificate-links">
+                        <a href="lava certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="View Java Bootcamp Certificate">View Certificate <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                {/* End Java Bootcamp Certificate */}
+                
+                {/* Add more certificate-box divs here for other certificates */}
+            </div>
+        </section>
+        {/* End Certificates Section */}
 
         <section class="contact" id="contact">
             <h2 class="heading">Contact <span>Me!</span></h2>
@@ -204,7 +257,7 @@
         });
 
         // Highlight active nav link on scroll
-        const sections = document.querySelectorAll('section');
+        const sections = document.querySelectorAll('section'); // This will now include the certificates section
         const navLinks = document.querySelectorAll('nav a');
 
         window.addEventListener('scroll', () => {
@@ -212,18 +265,31 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 100 && pageYOffset < sectionTop + sectionHeight - 100) {
+                // Adjust the offset condition for better accuracy if needed
+                if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.href.includes(current)) {
+                if (link.getAttribute('href').substring(1) === current) { // Adjusted to match href correctly
                     link.classList.add('active');
                 }
             });
+             // Ensure "Home" is active if no other section is, or if at the very top
+            const homeLink = document.querySelector('nav a[href="#home"]');
+            if (homeLink) { // Check if homeLink exists
+                if (current === '' && pageYOffset < (sections[0] ? sections[0].offsetTop : 0)) { // Check if sections[0] exists
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    homeLink.classList.add('active');
+                } else if (current === 'home') { // Explicitly activate home if it's the current section
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    homeLink.classList.add('active');
+                }
+            }
         });
+
 
         // Typing Text Animation (moved here for better modularity)
         const typingElement = document.querySelector('.typing-text span');
@@ -233,22 +299,23 @@
         let isDeleting = false;
 
         function typeWriter() {
-            const currentWord = words[wordIndex];
-            const displayWord = isDeleting ? currentWord.substring(0, charIndex--) : currentWord.substring(0, charIndex++);
-            typingElement.textContent = displayWord;
+            if (typingElement) { // Check if typingElement exists
+                const currentWord = words[wordIndex];
+                const displayWord = isDeleting ? currentWord.substring(0, charIndex--) : currentWord.substring(0, charIndex++);
+                typingElement.textContent = displayWord;
 
-            const typingSpeed = isDeleting ? 50 : 150; // Faster deletion
+                const typingSpeed = isDeleting ? 50 : 150; // Faster deletion
 
-            if (!isDeleting && charIndex === currentWord.length + 1) {
-                // Pause at end of word
-                setTimeout(() => isDeleting = true, 1000); // Wait 1 second before deleting
-            } else if (isDeleting && charIndex === -1) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length; // Move to next word
-                charIndex = 0;
+                if (!isDeleting && charIndex === currentWord.length + 1) {
+                    // Pause at end of word
+                    setTimeout(() => isDeleting = true, 1000); // Wait 1 second before deleting
+                } else if (isDeleting && charIndex === -1) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length; // Move to next word
+                    charIndex = 0;
+                }
+                setTimeout(typeWriter, typingSpeed);
             }
-
-            setTimeout(typeWriter, typingSpeed);
         }
 
         document.addEventListener('DOMContentLoaded', typeWriter); // Start animation on load
@@ -258,77 +325,86 @@
         const messageBox = document.getElementById('messageBox');
 
         function showMessage(message, type = 'info') {
-            messageBox.textContent = message;
-            messageBox.className = `message-box ${type}`;
-            messageBox.style.display = 'block';
-            setTimeout(() => {
-                messageBox.style.display = 'none';
-            }, 5000);
+            if (messageBox) { // Check if messageBox exists
+                messageBox.textContent = message;
+                messageBox.className = `message-box ${type}`;
+                messageBox.style.display = 'block';
+                setTimeout(() => {
+                    messageBox.style.display = 'none';
+                }, 5000);
+            }
         }
 
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+        if (contactForm) { // Check if contactForm exists
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-            const fullName = document.getElementById('fullName').value;
-            const emailAddress = document.getElementById('emailAddress').value;
-            const mobileNumber = document.getElementById('mobileNumber').value;
-            const emailSubject = document.getElementById('emailSubject').value;
-            const message = document.getElementById('message').value;
+                const fullName = document.getElementById('fullName').value;
+                const emailAddress = document.getElementById('emailAddress').value;
+                const mobileNumber = document.getElementById('mobileNumber').value;
+                const emailSubject = document.getElementById('emailSubject').value;
+                const message = document.getElementById('message').value;
 
-            // Basic validation
-            if (!fullName || !emailAddress || !mobileNumber || !emailSubject || !message) {
-                showMessage('Please fill in all fields.', 'error');
-                return;
-            }
-            if (!/^\S+@\S+\.\S+$/.test(emailAddress)) {
-                showMessage('Please enter a valid email address.', 'error');
-                return;
-            }
-            if (!/^\d{10}$/.test(mobileNumber)) { // Assuming 10-digit Indian mobile number
-                showMessage('Please enter a valid 10-digit mobile number.', 'error');
-                return;
-            }
+                // Basic validation
+                if (!fullName || !emailAddress || !mobileNumber || !emailSubject || !message) {
+                    showMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+                if (!/^\S+@\S+\.\S+$/.test(emailAddress)) {
+                    showMessage('Please enter a valid email address.', 'error');
+                    return;
+                }
+                if (!/^\d{10}$/.test(mobileNumber)) { // Assuming 10-digit Indian mobile number
+                    showMessage('Please enter a valid 10-digit mobile number.', 'error');
+                    return;
+                }
 
 
-            const whatsappNumber = '916375488022';
-            const whatsappMessage = `Hello Shubh,\n\nName: ${fullName}\nEmail: ${emailAddress}\nPhone: ${mobileNumber}\n\nSubject: ${emailSubject}\nMessage: ${message}`;
-            const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedWhatsappMessage}`;
+                const whatsappNumber = '916375488022';
+                const whatsappMessage = `Hello Shubh,\n\nName: ${fullName}\nEmail: ${emailAddress}\nPhone: ${mobileNumber}\n\nSubject: ${emailSubject}\nMessage: ${message}`;
+                const encodedWhatsappMessage = encodeURIComponent(whatsappMessage);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedWhatsappMessage}`;
 
-            const yourEmail = 'shubhdixi9@gmail.com';
-            const emailBody = `Name: ${fullName}\nEmail: ${emailAddress}\nPhone: ${mobileNumber}\n\nMessage: ${message}`;
-            const encodedEmailSubject = encodeURIComponent(emailSubject);
-            const encodedEmailBody = encodeURIComponent(emailBody);
-            const mailtoUrl = `mailto:${yourEmail}?subject=${encodedEmailSubject}&body=${encodedEmailBody}`;
+                const yourEmail = 'shubhdixi9@gmail.com';
+                const emailBody = `Name: ${fullName}\nEmail: ${emailAddress}\nPhone: ${mobileNumber}\n\nMessage: ${message}`;
+                const encodedEmailSubject = encodeURIComponent(emailSubject);
+                const encodedEmailBody = encodeURIComponent(emailBody);
+                const mailtoUrl = `mailto:${yourEmail}?subject=${encodedEmailSubject}&body=${encodedEmailBody}`;
 
-            try {
-                window.open(whatsappUrl, '_blank');
-                window.open(mailtoUrl, '_blank');
-                showMessage('Your message is being prepared for WhatsApp and Email! Please allow pop-ups.', 'success');
-                contactForm.reset();
-            } catch (error) {
-                console.error("Error opening WhatsApp or Mailto:", error);
-                showMessage('Could not open WhatsApp or Email. Please check your browser settings for pop-ups or try again.', 'error');
-            }
-        });
+                try {
+                    window.open(whatsappUrl, '_blank');
+                    window.open(mailtoUrl, '_blank');
+                    showMessage('Your message is being prepared for WhatsApp and Email! Please allow pop-ups.', 'success');
+                    contactForm.reset();
+                } catch (error) {
+                    console.error("Error opening WhatsApp or Mailto:", error);
+                    showMessage('Could not open WhatsApp or Email. Please check your browser settings for pop-ups or try again.', 'error');
+                }
+            });
+        }
 
         // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) { // Check if currentYearElement exists
+             currentYearElement.textContent = new Date().getFullYear();
+        }
+
 
         // New function to open projects from skill clicks
         function openProject(skill) {
             if (skill === 'python') {
-                // Scroll to the Spotify Listening Habits Analysis project
-                const spotifyProjectLink = document.querySelector('.project-box:nth-child(1) .project-links a:nth-child(1)'); // Targets the 'Report' link
-                if (spotifyProjectLink) {
-                    spotifyProjectLink.click(); // Programmatically clicks the link
+                const spotifyProject = document.querySelector('.project-box:nth-child(1)');
+                if (spotifyProject) {
+                    spotifyProject.scrollIntoView({ behavior: 'smooth' });
+                    // If you want to click the report link instead:
+                    // const spotifyProjectLink = document.querySelector('.project-box:nth-child(1) .project-links a:nth-child(1)');
+                    // if (spotifyProjectLink) spotifyProjectLink.click();
                 }
             } else if (skill === 'arduino') {
-                // Open the Arduino Project Drive link directly
                 window.open('https://drive.google.com/drive/u/8/folders/1V2OBlD11tKLA-TIQ-r92cpWsj5CXrmkS', '_blank');
             }
         }
     </script>
 </body>
 
-</html>
+                                                                            </html>
