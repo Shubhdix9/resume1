@@ -239,26 +239,27 @@
         }
 
         /* Scholarship specific styling */
-        .timeline-content.bg-gray-700.border.border-blue-700 { /* Adjusted class name based on HTML */
+        .timeline-content.bg-gunmetal-700.border.border-night-700 { /* Adjusted class name based on HTML */
             background-color: var(--color-gunmetal-700); /* Darker blue background */
             border-color: var(--color-night-700); /* Blue border */
             box-shadow: 0 6px 16px rgba(0, 213, 114, 0.15); /* Green tinted shadow */
         }
 
-        .timeline-content.bg-gray-700.border.border-blue-700 h3 {
+        .timeline-content.bg-gunmetal-700.border.border-night-700 h3 {
             color: var(--color-mint-cream-500); /* Lighter blue for scholarship heading */
         }
 
-        .timeline-content.bg-gray-700.border.border-blue-700 p {
+        .timeline-content.bg-gunmetal-700.border.border-night-700 p {
             color: var(--color-mint-cream-500); /* Light text for scholarship content */
         }
 
-        .timeline-content.bg-gray-700.border.border-blue-700 strong {
+        .timeline-content.bg-gunmetal-700.border.border-night-700 strong {
             color: var(--color-night-800); /* Green for highlighted text */
         }
 
-        .timeline-content.bg-gray-700.border.border-blue-700 .text-yellow-400 { /* Adjusted class name based on HTML */
+        .timeline-content.bg-gunmetal-700.border.border-night-700 .text-yellow-400 { /* Adjusted class name based on HTML */
             color: var(--color-night-900); /* Orange for "Highly Competitive!" */
+            font-weight: bold; /* Make it bold */
         }
 
 
@@ -324,7 +325,7 @@
         .education-image {
             width: 80px;
             height: 80px;
-            object-fit: cover;
+            object-fit: contain; /* Changed to contain to prevent cropping logos */
             border-radius: 50%;
             margin-bottom: 1rem;
             border: 3px solid var(--color-night-700);
@@ -602,7 +603,7 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content bg-gunmetal-600 p-6 rounded-lg shadow-lg border border-gunmetal-700">
-                        <img src="https://placehold.co/80x80/55a5a8/00d572?text=LPU" alt="Lovely Professional University Logo" class="education-image mx-auto mb-4">
+                        <img src="lpulogo.png" alt="Lovely Professional University Logo" class="education-image mx-auto mb-4">
                         <h3 class="text-xl font-semibold text-night-700">B.Tech in Computer Science Engineering</h3>
                         <p class="text-cadet-gray-500">Lovely Professional University (LPU)</p>
                         <span class="duration text-cadet-gray-600 text-sm">Currently pursuing (Expected Graduation: 2029)</span>
@@ -612,8 +613,8 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content bg-gunmetal-700 border border-night-700 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-semibold text-mint-cream-500">LPUNEST Scholarship Recipient <span class="text-night-900 text-base ml-2">(Highly Competitive!)</span></h3>
-                        <p class="text-mint-cream-500 mt-2">Awarded a <strong class="text-night-800">60% scholarship (equivalent to ₹8 Lakhs)</strong> for B.Tech in Computer Science Engineering at Lovely Professional University, based on an outstanding score of <strong class="text-night-800">400/360 in the LPUNEST entrance examination</strong>. This prestigious scholarship is awarded to only a select few students who meet the stringent <strong class="text-night-800">LPUNEST Cut-off A</strong> criteria, demonstrating exceptional academic merit.</p>
+                        <h3 class="text-xl font-semibold text-mint-cream-500">LPUNEST Scholarship Recipient <span class="text-night-900 text-base ml-2 font-bold">(Highly Competitive!)</span></h3>
+                        <p class="text-mint-cream-500 mt-2"><span class="highlight-line">Awarded a <strong class="text-night-800">60% scholarship (equivalent to ₹8 Lakhs)</strong> for B.Tech in Computer Science Engineering at Lovely Professional University, based on an outstanding score of <strong class="text-night-800">400/360 in the LPUNEST entrance examination</strong>.</span> This prestigious scholarship is awarded to only a select few students who meet the stringent <strong class="text-night-800">LPUNEST Cut-off A</strong> criteria, demonstrating exceptional academic merit.</p>
                         <span class="duration text-cadet-gray-600 text-sm mt-2 block">Awarded: 2025</span>
                     </div>
                 </div>
@@ -621,7 +622,7 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content bg-gunmetal-600 p-6 rounded-lg shadow-lg border border-gunmetal-700">
-                        <img src="https://placehold.co/80x80/55a5a8/00d572?text=School" alt="St. Anselm's Senior Secondary School Logo" class="education-image mx-auto mb-4">
+                        <img src="schoollogo.png" alt="St. Anselm's Senior Secondary School Logo" class="education-image mx-auto mb-4">
                         <h3 class="text-xl font-semibold text-night-700">Class 12th (PCM with Informatics Practices)</h3>
                         <p class="text-cadet-gray-500">St. Anselm's Senior Secondary School</p>
                         <p class="text-cadet-gray-500"><strong>Overall Percentage: 80%</strong></p>
