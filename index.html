@@ -6,8 +6,287 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for elements not easily covered by Tailwind or for specific overrides */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light background - a soft grey-blue */
+            color: #334155; /* Dark text color - slate-700 */
+            scroll-behavior: smooth;
+        }
+
+        .no-scroll {
+            overflow: hidden;
+        }
+
+        /* Header specific styling */
+        header {
+            background-color: #ffffff; /* White header */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
+        }
+
+        .logo {
+            color: #3b82f6; /* Blue for logo */
+            font-weight: bold;
+            font-size: 1.75rem; /* text-3xl */
+        }
+
+        #mainNav a {
+            color: #475569; /* Slate-600 for nav links */
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #mainNav a:hover,
+        #mainNav a.active {
+            background-color: #e0f2fe; /* Light blue hover/active background */
+            color: #3b82f6; /* Blue for hover/active text */
+        }
+
+        /* Mobile menu specific styles */
+        .menu-icon {
+            display: none; /* Hidden by default on larger screens */
+            cursor: pointer;
+            font-size: 1.75rem; /* text-3xl */
+            color: #3b82f6; /* Blue for menu icon */
+        }
+
+        @media (max-width: 768px) {
+            #mainNav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 4rem; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: #ffffff; /* White background for mobile nav */
+                padding: 1rem 0;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                z-index: 10;
+            }
+
+            #mainNav.active {
+                display: flex;
+            }
+
+            #mainNav a {
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+                width: 100%;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        /* Typing text animation */
+        .typing-text span {
+            border-right: 0.15em solid #3b82f6; /* Blinking cursor - blue */
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3b82f6; }
+        }
+
+        /* General button styling */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3b82f6; /* Blue button */
+            color: #ffffff; /* White text on button */
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2); /* Subtle blue shadow */
+        }
+
+        .btn:hover {
+            background-color: #2563eb; /* Darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .small-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Section headings */
+        .heading {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1e293b; /* Darker text for headings */
+        }
+
+        .heading span {
+            color: #3b82f6; /* Blue accent */
+        }
+
+        /* Timeline specific styling */
+        .education-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #cbd5e1; /* Light grey line */
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .timeline-dot {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: #3b82f6; /* Blue dot */
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 0.5rem;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px #f0f4f8; /* Matches body background for a "floating" effect */
+        }
+
+        .timeline-content {
+            background-color: #ffffff; /* White content box */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            width: 45%; /* Adjust width for content */
+            border: 1px solid #e2e8f0; /* Light border */
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 7%; /* Space between content and line */
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 7%; /* Space between content and line */
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            color: #3b82f6; /* Blue for heading */
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+            color: #475569; /* Slate-600 */
+        }
+
+        .timeline-content .duration {
+            font-size: 0.875rem;
+            color: #64748b; /* Slate-500 */
+        }
+
+        /* Scholarship specific styling */
+        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 {
+            background-color: #e0f2fe; /* Very light blue background */
+            border-color: #93c5fd; /* Light blue border */
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.15); /* Blue tinted shadow */
+        }
+
+        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 h3 {
+            color: #1d4ed8; /* Darker blue for scholarship heading */
+        }
+
+        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 p {
+            color: #334155; /* Dark text for scholarship content */
+        }
+
+        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 strong {
+            color: #16a34a; /* Green for highlighted text */
+        }
+
+        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 .text-yellow-400 {
+            color: #d97706; /* Darker orange for "Highly Competitive!" */
+        }
+
+
+        /* Responsive adjustments for timeline */
+        @media (max-width: 768px) {
+            .education-timeline::before {
+                left: 1.5rem; /* Align line to the left */
+                transform: translateX(0);
+            }
+
+            .timeline-item {
+                justify-content: flex-start;
+                margin-left: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+            }
+
+            .timeline-dot {
+                left: 1.5rem;
+                transform: translateX(-50%);
+            }
+
+            .timeline-content {
+                width: calc(100% - 4rem); /* Adjust width, considering dot and padding */
+                margin-left: 4rem; /* Space for dot and line */
+                margin-right: 0 !important; /* Override even child margin */
+            }
+        }
+
+        /* Message Box for forms */
+        .message-box {
+            display: none;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-box.info {
+            background-color: #bfdbfe; /* Light blue */
+            color: #1e40af; /* Dark blue text */
+        }
+
+        .message-box.success {
+            background-color: #dcfce7; /* Light green */
+            color: #166534; /* Dark green text */
+        }
+
+        .message-box.error {
+            background-color: #fee2e2; /* Light red */
+            color: #991b1b; /* Dark red text */
+        }
+    </style>
     <title>Shubh Dixit - CSE Student & Full-Stack Developer Portfolio</title>
     <meta name="description" content="Portfolio of Shubh Dixit, a CSE engineering student and full-stack web developer specializing in Python, HTML, CSS, JavaScript, MySQL, PHP, C, C++, and Java. Explore projects and skills.">
     <meta property="og:title" content="Shubh Dixit - Portfolio">
@@ -18,222 +297,234 @@
     <link rel="canonical" href="https://yourwebsite.com">
 </head>
 
-<body>
-    <header>
-        <a href="#home" class="logo" aria-label="Go to Home section">SHUBH</a>
+<body class="bg-blue-50 text-slate-700 font-inter">
+    <header class="flex justify-between items-center px-4 py-4 md:px-8 bg-white shadow-lg fixed top-0 left-0 w-full z-50">
+        <a href="#home" class="logo text-blue-600 font-bold text-3xl" aria-label="Go to Home section">SHUBH</a>
 
-        <nav id="mainNav">
-            <a href="#home" class="active" aria-label="Home section">Home</a>
-            <a href="#skills" aria-label="Skills section">Skills</a>
-            <a href="#education" aria-label="Education section">Education</a>
-            <a href="#projects" aria-label="Projects section">Projects</a>
-            <a href="#certificates" aria-label="Certificates section">Certificates</a>
-            <a href="#contact" aria-label="Contact section">Contact</a>
+        <nav id="mainNav" class="hidden md:flex space-x-4">
+            <a href="#home" class="active text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-300" aria-label="Home section">Home</a>
+            <a href="#skills" class="text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-300" aria-label="Skills section">Skills</a>
+            <a href="#education" class="text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-300" aria-label="Education section">Education</a>
+            <a href="#projects" class="text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-300" aria-label="Projects section">Projects</a>
+            <a href="#certificates" class="text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-300" aria-label="Certificates section">Certificates</a>
+            <a href="#contact" class="text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-300" aria-label="Contact section">Contact</a>
         </nav>
 
-        <div class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
+        <div class="menu-icon md:hidden text-3xl text-blue-600 cursor-pointer" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </div>
     </header>
 
-    <main>
-        <section class="home" id="home">
-            <div class="home-img">
-                <img src="shubh.jpg" alt="Professional headshot of Shubh Dixit" loading="eager">
+    <main class="pt-16">
+        <section class="home flex flex-col md:flex-row items-center justify-center min-h-screen p-8 md:p-16 space-y-8 md:space-y-0 md:space-x-16" id="home">
+            <div class="home-img flex-shrink-0">
+                <img src="shubh.jpg" alt="Professional headshot of Shubh Dixit" loading="eager" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-xl border-4 border-blue-600">
             </div>
-            <div class="home-content">
-                <h1>Hi, It's <span>Shubh Dixit</span></h1>
-                <h3 class="typing-text">I'm a <span></span></h3>
-                <p>As a **CSE engineering student from LPU**, I recently built my personal website, showcasing my **full-stack web development skills**. I leveraged my expertise in **Python, HTML, CSS, and JavaScript** for the front-end and back-end, integrating **MySQL for robust data management**, and utilizing **PHP for server-side functionalities**. This project also demonstrates my foundational programming strengths in **C, C++, and Java**, proving my versatility as a developer.</p>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/shubhdixit9/" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's LinkedIn profile"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/Shubhdix9" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's GitHub profile"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://twitter.com/your_x_handle" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's X (formerly Twitter) profile"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.instagram.com/shubh_dixit__/" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's Instagram profile"><i class="fa-brands fa-instagram"></i></a>
+            <div class="home-content text-center md:text-left max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-slate-800">Hi, It's <span class="text-blue-600">Shubh Dixit</span></h1>
+                <h3 class="typing-text text-2xl md:text-3xl font-semibold mb-6 text-slate-700">I'm a <span class="text-blue-600"></span></h3>
+                <p class="text-base md:text-lg leading-relaxed mb-8 text-slate-600">As a **CSE engineering student from LPU**, I recently built my personal website, showcasing my **full-stack web development skills**. I leveraged my expertise in **Python, HTML, CSS, and JavaScript** for the front-end and back-end, integrating **MySQL for robust data management**, and utilizing **PHP for server-side functionalities**. This project also demonstrates my foundational programming strengths in **C, C++, and Java**, proving my versatility as a developer.</p>
+                <div class="social-icons flex justify-center md:justify-start space-x-6 mb-8">
+                    <a href="https://www.linkedin.com/in/shubhdixit9/" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's LinkedIn profile" class="text-blue-600 hover:text-blue-800 text-3xl transition-colors duration-300"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Shubhdix9" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's GitHub profile" class="text-blue-600 hover:text-blue-800 text-3xl transition-colors duration-300"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://twitter.com/your_x_handle" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's X (formerly Twitter) profile" class="text-blue-600 hover:text-blue-800 text-3xl transition-colors duration-300"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/shubh_dixit__/" target="_blank" rel="noopener noreferrer" aria-label="Visit Shubh Dixit's Instagram profile" class="text-blue-600 hover:text-blue-800 text-3xl transition-colors duration-300"><i class="fa-brands fa-instagram"></i></a>
                 </div>
-                <a href="#contact" class="btn">Hire Me</a>
-            </div>
-        </section>
-
-        <section class="skills" id="skills">
-            <h2 class="heading">My <span>Skills</span></h2>
-            <div class="skills-container">
-                <div class="skill-box" onclick="openProject('python')">
-                    <i class="fab fa-python"></i>
-                    <h3>Python</h3>
-                </div>
-                <div class="skill-box">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML5</h3>
-                </div>
-                <div class="skill-box">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS3</h3>
-                </div>
-                <div class="skill-box">
-                    <i class="fab fa-js-square"></i>
-                    <h3>JavaScript</h3>
-                </div>
-                <div class="skill-box">
-                    <i class="fas fa-database"></i>
-                    <h3>MySQL</h3>
-                </div>
-                <div class="skill-box">
-                    <i class="fab fa-php"></i>
-                    <h3>PHP</h3>
-                </div>
-                <div class="skill-box">
-                    <i class="fas fa-c"></i>
-                    <h3>C/C++</h3>
-                </div>
-                <div class="skill-box">
-                    <i class="fab fa-java"></i>
-                    <h3>Java</h3>
-                </div>
-                <div class="skill-box" onclick="openProject('arduino')">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Arduino UNO</h3>
-                </div>
+                <a href="#contact" class="btn bg-blue-600 text-white hover:bg-blue-800 px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300">Hire Me</a>
             </div>
         </section>
 
-        <section class="education" id="education">
-            <h2 class="heading">My <span>Education</span></h2>
-            <div class="education-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>B.Tech in Computer Science Engineering</h3>
-                        <p>Lovely Professional University (LPU)</p>
-                        <span class="duration">Currently pursuing (Expected Graduation: 2028)</span>
-                    </div>
+        <section class="skills py-16 px-8 bg-blue-100" id="skills">
+            <h2 class="heading text-4xl font-bold text-center mb-12 text-slate-800">My <span class="text-blue-600">Skills</span></h2>
+            <div class="skills-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 cursor-pointer border border-blue-200" onclick="openProject('python')">
+                    <i class="fab fa-python text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">Python</h3>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>LPUNEST Scholarship Recipient</h3>
-                        <p>Awarded a **60% scholarship (equivalent to ₹8 Lakhs)** for B.Tech in Computer Science Engineering at Lovely Professional University, based on an outstanding score of **400/360 in the LPUNEST entrance examination**. This highly competitive scholarship is awarded to only a select few students who meet the stringent **LPUNEST Cut-off A** criteria, demonstrating exceptional academic merit.</p>
-                        <span class="duration">Awarded: 2024</span>
-                    </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 border border-blue-200">
+                    <i class="fab fa-html5 text-5xl text-orange-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">HTML5</h3>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Class 12th (PCM with Informatics Practices)</h3>
-                        <p>St. Anselm's Senior Secondary School</p>
-                        <p><strong>Overall Percentage: 80%</strong></p>
-                        <p>Informatics Practices: 92 Marks</p>
-                        <span class="duration">Completed: 2024</span>
-                    </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 border border-blue-200">
+                    <i class="fab fa-css3-alt text-5xl text-blue-700 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">CSS3</h3>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Class 10th</h3>
-                        <p>St. Anselm's Senior Secondary School</p>
-                        <span class="duration">Completed: 2022</span>
-                    </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 border border-blue-200">
+                    <i class="fab fa-js-square text-5xl text-yellow-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">JavaScript</h3>
+                </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 border border-blue-200">
+                    <i class="fas fa-database text-5xl text-slate-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">MySQL</h3>
+                </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 border border-blue-200">
+                    <i class="fab fa-php text-5xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">PHP</h3>
+                </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 border border-blue-200">
+                    <i class="fas fa-c text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">C/C++</h3>
+                </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 border border-blue-200">
+                    <i class="fab fa-java text-5xl text-red-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">Java</h3>
+                </div>
+                <div class="skill-box bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center hover:scale-105 transition-transform duration-300 cursor-pointer border border-blue-200" onclick="openProject('arduino')">
+                    <i class="fas fa-microchip text-5xl text-teal-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-slate-700">Arduino UNO</h3>
                 </div>
             </div>
         </section>
 
-        <section class="projects" id="projects">
-            <h2 class="heading">My <span>Projects</span></h2>
-            <div class="projects-container">
-                <div class="project-box">
-                    <div class="project-info">
-                        <h3>Spotify Listening Habits Analysis (Python)</h3>
-                        <p>A **Python-based data analysis project** developed for my Class 12 Informatics Practices final examination. This project comprehensively analyzes Spotify listening habits, including **user behavior patterns, genre preferences, and effective playlist curation strategies**. It showcases strong skills in **data manipulation, analysis, and visualization** using libraries like **Pandas and Matplotlib**.</p>
-                        <p class="project-grade">Achieved **Full Marks** with exceptional creativity and insight!</p>
-                    </div>
-                    <div class="project-links">
-                        <a href="ip project.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="View Spotify Project Report (PDF)">Report <i class="fas fa-file-pdf"></i></a>
-                        <a href="project.py" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="View Spotify Project Code (Python)">Code <i class="fas fa-code"></i></a>
+        <section class="education py-16 px-8" id="education">
+            <h2 class="heading text-4xl font-bold text-center mb-12 text-slate-800">My <span class="text-blue-600">Education</span></h2>
+            <div class="education-timeline max-w-4xl mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-white p-6 rounded-lg shadow-lg border border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-600">B.Tech in Computer Science Engineering</h3>
+                        <p class="text-slate-600">Lovely Professional University (LPU)</p>
+                        <span class="duration text-slate-500 text-sm">Currently pursuing (Expected Graduation: 2028)</span>
                     </div>
                 </div>
-                <div class="project-box">
-                    <div class="project-info">
-                        <h3>Arduino UNO Robotics Drive Project</h3>
-                        <p>A hands-on **Arduino UNO project** demonstrating practical skills in **embedded systems and hardware interaction**. This project includes both **video demonstrations and the full code** (likely C/C++ based for Arduino) to showcase problem-solving and creativity in a physical computing environment.</p>
-                        <p class="project-grade">Practical application of hardware and software integration.</p>
+                <!-- LPUNEST Scholarship Mention -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-blue-50 border border-blue-300 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-blue-700">LPUNEST Scholarship Recipient <span class="text-amber-600 text-base ml-2">(Highly Competitive!)</span></h3>
+                        <p class="text-slate-700 mt-2">Awarded a <strong class="text-green-700">60% scholarship (equivalent to ₹8 Lakhs)</strong> for B.Tech in Computer Science Engineering at Lovely Professional University, based on an outstanding score of <strong class="text-green-700">400/360 in the LPUNEST entrance examination</strong>. This prestigious scholarship is awarded to only a select few students who meet the stringent <strong class="text-green-700">LPUNEST Cut-off A</strong> criteria, demonstrating exceptional academic merit.</p>
+                        <span class="duration text-slate-500 text-sm mt-2 block">Awarded: 2024</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://drive.google.com/drive/u/8/folders/1V2OBlD11tKLA-TIQ-r92cpWsj5CXrmkS" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="Access Arduino Project Drive Folder">Access Drive <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <!-- End LPUNEST Scholarship Mention -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-white p-6 rounded-lg shadow-lg border border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-600">Class 12th (PCM with Informatics Practices)</h3>
+                        <p class="text-slate-600">St. Anselm's Senior Secondary School</p>
+                        <p class="text-slate-600"><strong>Overall Percentage: 80%</strong></p>
+                        <p class="text-slate-600">Informatics Practices: 92 Marks</p>
+                        <span class="duration text-slate-500 text-sm">Completed: 2024</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-white p-6 rounded-lg shadow-lg border border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-600">Class 10th</h3>
+                        <p class="text-slate-600">St. Anselm's Senior Secondary School</p>
+                        <span class="duration text-slate-500 text-sm">Completed: 2022</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="certificates" id="certificates">
-            <h2 class="heading">My <span>Certificates</span></h2>
-            <div class="certificates-container">
-                <div class="certificate-box">
-                    <div class="certificate-info">
-                        <h3>Instagram Clone using Figma Workshop</h3>
-                        <p><strong>Day 1:</strong> Project Setup & Home Feed UI</p>
-                        <p>A 2-day project workshop on creating an Instagram Clone using Figma.</p>
-                        <p><strong>In collaboration with:</strong></p>
-                        <ul>
+        <section class="projects py-16 px-8 bg-blue-100" id="projects">
+            <h2 class="heading text-4xl font-bold text-center mb-12 text-slate-800">My <span class="text-blue-600">Projects</span></h2>
+            <div class="projects-container grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="project-box bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col border border-blue-200">
+                    <div class="project-info flex-grow">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-3">Spotify Listening Habits Analysis (Python)</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">A **Python-based data analysis project** developed for my Class 12 Informatics Practices final examination. This project comprehensively analyzes Spotify listening habits, including **user behavior patterns, genre preferences, and effective playlist curation strategies**. It showcases strong skills in **data manipulation, analysis, and visualization** using libraries like **Pandas and Matplotlib**.</p>
+                        <p class="project-grade text-green-700 font-semibold text-lg mb-4">Achieved **Full Marks** with exceptional creativity and insight!</p>
+                    </div>
+                    <div class="project-links flex flex-wrap gap-4 mt-auto">
+                        <a href="ip project.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn bg-blue-600 text-white hover:bg-blue-800 flex items-center space-x-2" aria-label="View Spotify Project Report (PDF)">
+                            <span>Report</span> <i class="fas fa-file-pdf"></i>
+                        </a>
+                        <a href="project.py" target="_blank" rel="noopener noreferrer" class="btn small-btn bg-blue-600 text-white hover:bg-blue-800 flex items-center space-x-2" aria-label="View Spotify Project Code (Python)">
+                            <span>Code</span> <i class="fas fa-code"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-box bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col border border-blue-200">
+                    <div class="project-info flex-grow">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-3">Arduino UNO Robotics Drive Project</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">A hands-on **Arduino UNO project** demonstrating practical skills in **embedded systems and hardware interaction**. This project includes both **video demonstrations and the full code** (likely C/C++ based for Arduino) to showcase problem-solving and creativity in a physical computing environment.</p>
+                        <p class="project-grade text-green-700 font-semibold text-lg mb-4">Practical application of hardware and software integration.</p>
+                    </div>
+                    <div class="project-links flex flex-wrap gap-4 mt-auto">
+                        <a href="https://drive.google.com/drive/u/8/folders/1V2OBlD11tKLA-TIQ-r92cpWsj5CXrmkS" target="_blank" rel="noopener noreferrer" class="btn small-btn bg-blue-600 text-white hover:bg-blue-800 flex items-center space-x-2" aria-label="Access Arduino Project Drive Folder">
+                            <span>Access Drive</span> <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="certificates py-16 px-8" id="certificates">
+            <h2 class="heading text-4xl font-bold text-center mb-12 text-slate-800">My <span class="text-blue-600">Certificates</span></h2>
+            <div class="certificates-container grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="certificate-box bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col border border-blue-200">
+                    <div class="certificate-info flex-grow">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-3">Instagram Clone using Figma Workshop</h3>
+                        <p class="text-slate-600 mb-2"><strong>Day 1:</strong> Project Setup & Home Feed UI</p>
+                        <p class="text-slate-600 mb-4">A 2-day project workshop on creating an Instagram Clone using Figma.</p>
+                        <p class="text-slate-600 font-semibold mb-2">In collaboration with:</p>
+                        <ul class="list-disc list-inside text-slate-600 mb-4">
                             <li>Google Developer Group MAD Mumbai</li>
                             <li>National Skill Development Corporation</li>
                             <li>ITM Group of Institutions</li>
                             <li>LetsUpgrade</li>
                         </ul>
-                        <p class="certificate-status">🤩 <strong>100% Program Completed</strong></p>
+                        <p class="certificate-status text-green-700 font-bold text-lg">🤩 100% Program Completed</p>
                     </div>
-                    <div class="certificate-links">
-                        <a href="Instagram tune.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="View Instagram Figma Certificate">View Certificate <i class="fas fa-file-pdf"></i></a>
+                    <div class="certificate-links flex flex-wrap gap-4 mt-auto">
+                        <a href="Instagram tune.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn bg-blue-600 text-white hover:bg-blue-800 flex items-center space-x-2" aria-label="View Instagram Figma Certificate">
+                            <span>View Certificate</span> <i class="fas fa-file-pdf"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="certificate-box">
-                    <div class="certificate-info">
-                        <h3>Java Bootcamp</h3>
-                        <p>This is to certify that Shubh Dixit has successfully completed the Java Bootcamp. The program was conducted by LetsUpgrade in collaboration with National Skill Development Corporation (NSDC) and ITM Edutech Training Pvt. Ltd.. The bootcamp ran for 3 days, from April 30, 2025, to April 2, 2025.</p>
-                        <p><strong>In collaboration with:</strong></p>
-                        <ul>
+                <div class="certificate-box bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col border border-blue-200">
+                    <div class="certificate-info flex-grow">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-3">Java Bootcamp</h3>
+                        <p class="text-slate-600 mb-4">This is to certify that Shubh Dixit has successfully completed the Java Bootcamp. The program was conducted by LetsUpgrade in collaboration with National Skill Development Corporation (NSDC) and ITM Edutech Training Pvt. Ltd. The bootcamp ran for 3 days, from April 30, 2025, to April 2, 2025.</p>
+                        <p class="text-slate-600 font-semibold mb-2">In collaboration with:</p>
+                        <ul class="list-disc list-inside text-slate-600 mb-4">
                             <li>LetsUpgrade</li>
                             <li>National Skill Development Corporation (NSDC)</li>
                             <li>ITM Edutech Training Pvt. Ltd.</li>
                             <li>GDG MAD (Google Developer Group MAD Mumbai)</li>
                         </ul>
-                        <p class="certificate-status">🤩 <strong>Program Completed</strong></p>
+                        <p class="certificate-status text-green-700 font-bold text-lg">🤩 Program Completed</p>
                     </div>
-                    <div class="certificate-links">
-                        <a href="lava certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="View Java Bootcamp Certificate">View Certificate <i class="fas fa-file-pdf"></i></a>
+                    <div class="certificate-links flex flex-wrap gap-4 mt-auto">
+                        <a href="lava certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn bg-blue-600 text-white hover:bg-blue-800 flex items-center space-x-2" aria-label="View Java Bootcamp Certificate">
+                            <span>View Certificate</span> <i class="fas fa-file-pdf"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact" id="contact">
-            <h2 class="heading">Contact <span>Me!</span></h2>
+        <section class="contact py-16 px-8 bg-blue-100" id="contact">
+            <h2 class="heading text-4xl font-bold text-center mb-12 text-slate-800">Contact <span class="text-blue-600">Me!</span></h2>
 
-            <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:shubhdixi9@gmail.com" aria-label="Email Shubh Dixit at shubhdixi9@gmail.com">shubhdixi9@gmail.com</a></p>
-                <p><i class="fas fa-phone"></i> Phone: <a href="tel:+916375488022" aria-label="Call Shubh Dixit at +91 6375488022">+91 6375488022</a></p>
+            <div class="contact-info text-center mb-10 space-y-4">
+                <p class="text-lg text-slate-700"><i class="fas fa-envelope text-blue-600 mr-3"></i> Email: <a href="mailto:shubhdixi9@gmail.com" class="text-blue-600 hover:underline" aria-label="Email Shubh Dixit at shubhdixi9@gmail.com">shubhdixi9@gmail.com</a></p>
+                <p class="text-lg text-slate-700"><i class="fas fa-phone text-blue-600 mr-3"></i> Phone: <a href="tel:+916375488022" class="text-blue-600 hover:underline" aria-label="Call Shubh Dixit at +91 6375488022">+91 6375488022</a></p>
             </div>
 
-            <form id="contactForm" aria-live="polite" aria-atomic="true">
-                <div class="input-box">
-                    <input type="text" id="fullName" placeholder="Full Name" required autocomplete="name" aria-label="Your Full Name">
-                    <input type="email" id="emailAddress" placeholder="Email Address" required autocomplete="email" aria-label="Your Email Address">
+            <form id="contactForm" class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-blue-200" aria-live="polite" aria-atomic="true">
+                <div class="input-box grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <input type="text" id="fullName" placeholder="Full Name" required autocomplete="name" aria-label="Your Full Name" class="p-3 rounded-lg bg-blue-50 border border-blue-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="email" id="emailAddress" placeholder="Email Address" required autocomplete="email" aria-label="Your Email Address" class="p-3 rounded-lg bg-blue-50 border border-blue-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div class="input-box">
-                    <input type="tel" id="mobileNumber" placeholder="Mobile Number" required autocomplete="tel" aria-label="Your Mobile Number">
-                    <input type="text" id="emailSubject" placeholder="Email Subject" required aria-label="Subject of your email">
+                <div class="input-box grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <input type="tel" id="mobileNumber" placeholder="Mobile Number" required autocomplete="tel" aria-label="Your Mobile Number" class="p-3 rounded-lg bg-blue-50 border border-blue-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="emailSubject" placeholder="Email Subject" required aria-label="Subject of your email" class="p-3 rounded-lg bg-blue-50 border border-blue-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <textarea id="message" cols="30" rows="10" placeholder="Your Message" required aria-label="Your Message"></textarea>
-                <input type="submit" value="Send Message" class="btn">
+                <textarea id="message" cols="30" rows="8" placeholder="Your Message" required aria-label="Your Message" class="w-full p-3 rounded-lg bg-blue-50 border border-blue-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"></textarea>
+                <input type="submit" value="Send Message" class="btn w-full bg-blue-600 text-white hover:bg-blue-800 px-8 py-3 rounded-lg font-semibold text-lg cursor-pointer transition-all duration-300">
             </form>
 
-            <div id="messageBox" class="message-box" role="status" aria-live="polite"></div>
+            <div id="messageBox" class="message-box max-w-xl mx-auto mt-8" role="status" aria-live="polite"></div>
 
         </section>
     </main>
 
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Shubh Dixit. All rights reserved.</p>
+    <footer class="text-center py-8 bg-white shadow-inner mt-16">
+        <p class="text-slate-500">&copy; <span id="currentYear"></span> Shubh Dixit. All rights reserved.</p>
     </footer>
 
     <script>
@@ -291,7 +582,7 @@
         });
 
 
-        // Typing Text Animation (moved here for better modularity)
+        // Typing Text Animation
         const typingElement = document.querySelector('.typing-text span');
         const words = ["Student", "CSE Engineer", "Web Designer", "Developer", "AI Developer"];
         let wordIndex = 0;
