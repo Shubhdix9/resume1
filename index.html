@@ -111,6 +111,14 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
+                        <h3>LPUNEST Scholarship Recipient</h3>
+                        <p>Awarded a **60% scholarship (equivalent to ₹8 Lakhs)** for B.Tech in Computer Science Engineering at Lovely Professional University, based on an outstanding score of **400/360 in the LPUNEST entrance examination**. This highly competitive scholarship is awarded to only a select few students who meet the stringent **LPUNEST Cut-off A** criteria, demonstrating exceptional academic merit.</p>
+                        <span class="duration">Awarded: 2024</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
                         <h3>Class 12th (PCM with Informatics Practices)</h3>
                         <p>St. Anselm's Senior Secondary School</p>
                         <p><strong>Overall Percentage: 80%</strong></p>
@@ -156,7 +164,6 @@
             </div>
         </section>
 
-        {/* Certificates Section */}
         <section class="certificates" id="certificates">
             <h2 class="heading">My <span>Certificates</span></h2>
             <div class="certificates-container">
@@ -179,17 +186,16 @@
                     </div>
                 </div>
 
-                {/* Java Bootcamp Certificate */}
                 <div class="certificate-box">
                     <div class="certificate-info">
                         <h3>Java Bootcamp</h3>
-                        <p>This is to certify that Shubh Dixit has successfully completed the Java Bootcamp. The program was conducted by LetsUpgrade in collaboration with National Skill Development Corporation (NSDC) and ITM Edutech Training Pvt. Ltd.[cite: 1, 2]. The bootcamp ran for 3 days, from April 30, 2025, to April 2, 2025[cite: 1].</p>
+                        <p>This is to certify that Shubh Dixit has successfully completed the Java Bootcamp. The program was conducted by LetsUpgrade in collaboration with National Skill Development Corporation (NSDC) and ITM Edutech Training Pvt. Ltd.. The bootcamp ran for 3 days, from April 30, 2025, to April 2, 2025.</p>
                         <p><strong>In collaboration with:</strong></p>
                         <ul>
-                            <li>LetsUpgrade [cite: 1]</li>
-                            <li>National Skill Development Corporation (NSDC) [cite: 1]</li>
-                            <li>ITM Edutech Training Pvt. Ltd. [cite: 2]</li>
-                            <li>GDG MAD (Google Developer Group MAD Mumbai) [cite: 1]</li>
+                            <li>LetsUpgrade</li>
+                            <li>National Skill Development Corporation (NSDC)</li>
+                            <li>ITM Edutech Training Pvt. Ltd.</li>
+                            <li>GDG MAD (Google Developer Group MAD Mumbai)</li>
                         </ul>
                         <p class="certificate-status">🤩 <strong>Program Completed</strong></p>
                     </div>
@@ -197,12 +203,8 @@
                         <a href="lava certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn small-btn" aria-label="View Java Bootcamp Certificate">View Certificate <i class="fas fa-file-pdf"></i></a>
                     </div>
                 </div>
-                {/* End Java Bootcamp Certificate */}
-                
-                {/* Add more certificate-box divs here for other certificates */}
             </div>
         </section>
-        {/* End Certificates Section */}
 
         <section class="contact" id="contact">
             <h2 class="heading">Contact <span>Me!</span></h2>
@@ -257,7 +259,7 @@
         });
 
         // Highlight active nav link on scroll
-        const sections = document.querySelectorAll('section'); // This will now include the certificates section
+        const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('nav a');
 
         window.addEventListener('scroll', () => {
@@ -265,7 +267,6 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                // Adjust the offset condition for better accuracy if needed
                 if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
                     current = section.getAttribute('id');
                 }
@@ -273,17 +274,16 @@
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) { // Adjusted to match href correctly
+                if (link.getAttribute('href').substring(1) === current) {
                     link.classList.add('active');
                 }
             });
-             // Ensure "Home" is active if no other section is, or if at the very top
             const homeLink = document.querySelector('nav a[href="#home"]');
-            if (homeLink) { // Check if homeLink exists
-                if (current === '' && pageYOffset < (sections[0] ? sections[0].offsetTop : 0)) { // Check if sections[0] exists
+            if (homeLink) {
+                if (current === '' && pageYOffset < (sections[0] ? sections[0].offsetTop : 0)) {
                     navLinks.forEach(link => link.classList.remove('active'));
                     homeLink.classList.add('active');
-                } else if (current === 'home') { // Explicitly activate home if it's the current section
+                } else if (current === 'home') {
                     navLinks.forEach(link => link.classList.remove('active'));
                     homeLink.classList.add('active');
                 }
@@ -299,33 +299,32 @@
         let isDeleting = false;
 
         function typeWriter() {
-            if (typingElement) { // Check if typingElement exists
+            if (typingElement) {
                 const currentWord = words[wordIndex];
                 const displayWord = isDeleting ? currentWord.substring(0, charIndex--) : currentWord.substring(0, charIndex++);
                 typingElement.textContent = displayWord;
 
-                const typingSpeed = isDeleting ? 50 : 150; // Faster deletion
+                const typingSpeed = isDeleting ? 50 : 150;
 
                 if (!isDeleting && charIndex === currentWord.length + 1) {
-                    // Pause at end of word
-                    setTimeout(() => isDeleting = true, 1000); // Wait 1 second before deleting
+                    setTimeout(() => isDeleting = true, 1000);
                 } else if (isDeleting && charIndex === -1) {
                     isDeleting = false;
-                    wordIndex = (wordIndex + 1) % words.length; // Move to next word
+                    wordIndex = (wordIndex + 1) % words.length;
                     charIndex = 0;
                 }
                 setTimeout(typeWriter, typingSpeed);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', typeWriter); // Start animation on load
+        document.addEventListener('DOMContentLoaded', typeWriter);
 
         // JavaScript for contact form (WhatsApp and Email)
         const contactForm = document.getElementById('contactForm');
         const messageBox = document.getElementById('messageBox');
 
         function showMessage(message, type = 'info') {
-            if (messageBox) { // Check if messageBox exists
+            if (messageBox) {
                 messageBox.textContent = message;
                 messageBox.className = `message-box ${type}`;
                 messageBox.style.display = 'block';
@@ -335,7 +334,7 @@
             }
         }
 
-        if (contactForm) { // Check if contactForm exists
+        if (contactForm) {
             contactForm.addEventListener('submit', function(event) {
                 event.preventDefault();
 
@@ -385,8 +384,8 @@
 
         // Set current year in footer
         const currentYearElement = document.getElementById('currentYear');
-        if (currentYearElement) { // Check if currentYearElement exists
-             currentYearElement.textContent = new Date().getFullYear();
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
         }
 
 
@@ -395,10 +394,9 @@
             if (skill === 'python') {
                 const spotifyProject = document.querySelector('.project-box:nth-child(1)');
                 if (spotifyProject) {
-                    spotifyProject.scrollIntoView({ behavior: 'smooth' });
-                    // If you want to click the report link instead:
-                    // const spotifyProjectLink = document.querySelector('.project-box:nth-child(1) .project-links a:nth-child(1)');
-                    // if (spotifyProjectLink) spotifyProjectLink.click();
+                    spotifyProject.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
             } else if (skill === 'arduino') {
                 window.open('https://drive.google.com/drive/u/8/folders/1V2OBlD11tKLA-TIQ-r92cpWsj5CXrmkS', '_blank');
@@ -407,4 +405,4 @@
     </script>
 </body>
 
-                                                                            </html>
+</html>
