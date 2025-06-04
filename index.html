@@ -12,11 +12,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for elements not easily covered by Tailwind or for specific overrides */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Light background - a soft grey-blue */
-            color: #334155; /* Dark text color - slate-700 */
+            background-color: #f0f4f8;
+            /* Light background - a soft grey-blue */
+            color: #334155;
+            /* Dark text color - slate-700 */
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         .no-scroll {
@@ -25,18 +30,23 @@
 
         /* Header specific styling */
         header {
-            background-color: #ffffff; /* White header */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            background-color: #ffffff;
+            /* White header */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            /* Softer shadow */
         }
 
         .logo {
-            color: #3b82f6; /* Blue for logo */
+            color: #3b82f6;
+            /* Blue for logo */
             font-weight: bold;
-            font-size: 1.75rem; /* text-3xl */
+            font-size: 1.75rem;
+            /* text-3xl */
         }
 
         #mainNav a {
-            color: #475569; /* Slate-600 for nav links */
+            color: #475569;
+            /* Slate-600 for nav links */
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -44,16 +54,21 @@
 
         #mainNav a:hover,
         #mainNav a.active {
-            background-color: #e0f2fe; /* Light blue hover/active background */
-            color: #3b82f6; /* Blue for hover/active text */
+            background-color: #e0f2fe;
+            /* Light blue hover/active background */
+            color: #3b82f6;
+            /* Blue for hover/active text */
         }
 
         /* Mobile menu specific styles */
         .menu-icon {
-            display: none; /* Hidden by default on larger screens */
+            display: none;
+            /* Hidden by default on larger screens */
             cursor: pointer;
-            font-size: 1.75rem; /* text-3xl */
-            color: #3b82f6; /* Blue for menu icon */
+            font-size: 1.75rem;
+            /* text-3xl */
+            color: #3b82f6;
+            /* Blue for menu icon */
         }
 
         @media (max-width: 768px) {
@@ -61,10 +76,12 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 4rem; /* Adjust based on header height */
+                top: 4rem;
+                /* Adjust based on header height */
                 left: 0;
                 width: 100%;
-                background-color: #ffffff; /* White background for mobile nav */
+                background-color: #ffffff;
+                /* White background for mobile nav */
                 padding: 1rem 0;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
                 z-index: 10;
@@ -87,31 +104,42 @@
 
         /* Typing text animation */
         .typing-text span {
-            border-right: 0.15em solid #3b82f6; /* Blinking cursor - blue */
+            border-right: 0.15em solid #3b82f6;
+            /* Blinking cursor - blue */
             animation: blink-caret 0.75s step-end infinite;
         }
 
         @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #3b82f6; }
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #3b82f6;
+            }
         }
 
         /* General button styling */
         .btn {
             display: inline-block;
             padding: 0.75rem 1.5rem;
-            background-color: #3b82f6; /* Blue button */
-            color: #ffffff; /* White text on button */
+            background-color: #3b82f6;
+            /* Blue button */
+            color: #ffffff;
+            /* White text on button */
             border-radius: 0.5rem;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             text-decoration: none;
-            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2); /* Subtle blue shadow */
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+            /* Subtle blue shadow */
         }
 
         .btn:hover {
-            background-color: #2563eb; /* Darker blue on hover */
+            background-color: #2563eb;
+            /* Darker blue on hover */
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
         }
@@ -126,11 +154,13 @@
             font-size: 3rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: #1e293b; /* Darker text for headings */
+            color: #1e293b;
+            /* Darker text for headings */
         }
 
         .heading span {
-            color: #3b82f6; /* Blue accent */
+            color: #3b82f6;
+            /* Blue accent */
         }
 
         /* Timeline specific styling */
@@ -146,7 +176,8 @@
             left: 50%;
             width: 4px;
             height: 100%;
-            background: #cbd5e1; /* Light grey line */
+            background: #cbd5e1;
+            /* Light grey line */
             transform: translateX(-50%);
         }
 
@@ -164,36 +195,45 @@
         .timeline-dot {
             width: 1.5rem;
             height: 1.5rem;
-            background: #3b82f6; /* Blue dot */
+            background: #3b82f6;
+            /* Blue dot */
             border-radius: 50%;
             position: absolute;
             left: 50%;
             top: 0.5rem;
             transform: translateX(-50%);
             z-index: 1;
-            box-shadow: 0 0 0 4px #f0f4f8; /* Matches body background for a "floating" effect */
+            box-shadow: 0 0 0 4px #f0f4f8;
+            /* Matches body background for a "floating" effect */
         }
 
         .timeline-content {
-            background-color: #ffffff; /* White content box */
+            background-color: #ffffff;
+            /* White content box */
             padding: 1.5rem;
             border-radius: 0.75rem;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /* Softer shadow */
-            width: 45%; /* Adjust width for content */
-            border: 1px solid #e2e8f0; /* Light border */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            /* Softer shadow */
+            width: 45%;
+            /* Adjust width for content */
+            border: 1px solid #e2e8f0;
+            /* Light border */
         }
 
         .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 7%; /* Space between content and line */
+            margin-right: 7%;
+            /* Space between content and line */
         }
 
         .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 7%; /* Space between content and line */
+            margin-left: 7%;
+            /* Space between content and line */
         }
 
         .timeline-content h3 {
             font-size: 1.5rem;
-            color: #3b82f6; /* Blue for heading */
+            color: #3b82f6;
+            /* Blue for heading */
             margin-bottom: 0.5rem;
         }
 
@@ -201,42 +241,52 @@
             font-size: 1rem;
             line-height: 1.5;
             margin-bottom: 0.5rem;
-            color: #475569; /* Slate-600 */
+            color: #475569;
+            /* Slate-600 */
         }
 
         .timeline-content .duration {
             font-size: 0.875rem;
-            color: #64748b; /* Slate-500 */
+            color: #64748b;
+            /* Slate-500 */
         }
 
         /* Scholarship specific styling */
-        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 {
-            background-color: #e0f2fe; /* Very light blue background */
-            border-color: #93c5fd; /* Light blue border */
-            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.15); /* Blue tinted shadow */
+        .timeline-content.bg-blue-50.border.border-blue-300 {
+            background-color: #e0f2fe;
+            /* Very light blue background */
+            border-color: #93c5fd;
+            /* Light blue border */
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.15);
+            /* Blue tinted shadow */
         }
 
-        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 h3 {
-            color: #1d4ed8; /* Darker blue for scholarship heading */
+        .timeline-content.bg-blue-50.border.border-blue-300 h3 {
+            color: #1d4ed8;
+            /* Darker blue for scholarship heading */
         }
 
-        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 p {
-            color: #334155; /* Dark text for scholarship content */
+        .timeline-content.bg-blue-50.border.border-blue-300 p {
+            color: #334155;
+            /* Dark text for scholarship content */
         }
 
-        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 strong {
-            color: #16a34a; /* Green for highlighted text */
+        .timeline-content.bg-blue-50.border.border-blue-300 strong {
+            color: #16a34a;
+            /* Green for highlighted text */
         }
 
-        .timeline-content.bg-blue-900.bg-opacity-30.border.border-blue-700 .text-yellow-400 {
-            color: #d97706; /* Darker orange for "Highly Competitive!" */
+        .timeline-content.bg-blue-50.border.border-blue-300 .text-amber-600 {
+            color: #d97706;
+            /* Darker orange for "Highly Competitive!" */
         }
 
 
         /* Responsive adjustments for timeline */
         @media (max-width: 768px) {
             .education-timeline::before {
-                left: 1.5rem; /* Align line to the left */
+                left: 1.5rem;
+                /* Align line to the left */
                 transform: translateX(0);
             }
 
@@ -255,9 +305,12 @@
             }
 
             .timeline-content {
-                width: calc(100% - 4rem); /* Adjust width, considering dot and padding */
-                margin-left: 4rem; /* Space for dot and line */
-                margin-right: 0 !important; /* Override even child margin */
+                width: calc(100% - 4rem);
+                /* Adjust width, considering dot and padding */
+                margin-left: 4rem;
+                /* Space for dot and line */
+                margin-right: 0 !important;
+                /* Override even child margin */
             }
         }
 
@@ -273,18 +326,211 @@
         }
 
         .message-box.info {
-            background-color: #bfdbfe; /* Light blue */
-            color: #1e40af; /* Dark blue text */
+            background-color: #bfdbfe;
+            /* Light blue */
+            color: #1e40af;
+            /* Dark blue text */
         }
 
         .message-box.success {
-            background-color: #dcfce7; /* Light green */
-            color: #166534; /* Dark green text */
+            background-color: #dcfce7;
+            /* Light green */
+            color: #166534;
+            /* Dark green text */
         }
 
         .message-box.error {
-            background-color: #fee2e2; /* Light red */
-            color: #991b1b; /* Dark red text */
+            background-color: #fee2e2;
+            /* Light red */
+            color: #991b1b;
+            /* Dark red text */
+        }
+
+        /* Image styling for education section */
+        .education-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid #3b82f6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .education-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-15deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        /* Apply animations */
+        header {
+            animation: fadeInDown 0.5s ease-out forwards;
+        }
+
+        .home-content {
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .home-img {
+            animation: scaleIn 0.8s ease-out 0.5s forwards;
+        }
+
+        .skills-container .skill-box,
+        .projects-container .project-box,
+        .certificates-container .certificate-box {
+            opacity: 0; /* Hidden by default for JS animation */
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+
+        .skills-container .skill-box.show,
+        .projects-container .project-box.show,
+        .certificates-container .certificate-box.show {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 1;
+        }
+
+        .education-timeline .timeline-item {
+            opacity: 0; /* Hidden by default for JS animation */
+        }
+
+        .education-timeline .timeline-item.show {
+            animation: rotateIn 0.7s ease-out forwards;
+            opacity: 1;
+        }
+
+        .contact form,
+        .contact .contact-info {
+            animation: scaleIn 0.8s ease-out 0.3s forwards;
+        }
+
+        /* Hover effects */
+        .skill-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-box:hover,
+        .certificate-box:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Creative elements */
+        .home-content h1 span,
+        .typing-text span,
+        .heading span {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa); /* Blue gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            border: none; /* Remove border as gradient is background */
+            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #2563eb, #3b82f6);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        .social-icons a {
+            background: #ffffff;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icons a:hover {
+            background: #3b82f6;
+            color: #ffffff;
+            border-color: #3b82f6;
+            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .skill-box i {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skill-box:hover i {
+            background: none; /* Reset gradient on hover */
+            -webkit-text-fill-color: #3b82f6; /* Set solid color on hover */
+        }
+
+        .timeline-dot {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            box-shadow: 0 0 0 4px #f0f4f8, 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            box-shadow: 0 0 0 4px #f0f4f8, 0 0 15px rgba(59, 130, 246, 0.7);
+        }
+
+        .contact input,
+        .contact textarea {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
         }
     </style>
     <title>Shubh Dixit - CSE Student & Full-Stack Developer Portfolio</title>
@@ -382,9 +628,10 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content bg-white p-6 rounded-lg shadow-lg border border-blue-200">
+                        <img src="https://placehold.co/80x80/e0f2fe/3b82f6?text=LPU" alt="Lovely Professional University Logo" class="education-image mx-auto mb-4">
                         <h3 class="text-xl font-semibold text-blue-600">B.Tech in Computer Science Engineering</h3>
                         <p class="text-slate-600">Lovely Professional University (LPU)</p>
-                        <span class="duration text-slate-500 text-sm">Currently pursuing (Expected Graduation: 2028)</span>
+                        <span class="duration text-slate-500 text-sm">Currently pursuing (Expected Graduation: 2029)</span>
                     </div>
                 </div>
                 <!-- LPUNEST Scholarship Mention -->
@@ -393,13 +640,14 @@
                     <div class="timeline-content bg-blue-50 border border-blue-300 p-6 rounded-lg shadow-lg">
                         <h3 class="text-xl font-semibold text-blue-700">LPUNEST Scholarship Recipient <span class="text-amber-600 text-base ml-2">(Highly Competitive!)</span></h3>
                         <p class="text-slate-700 mt-2">Awarded a <strong class="text-green-700">60% scholarship (equivalent to ₹8 Lakhs)</strong> for B.Tech in Computer Science Engineering at Lovely Professional University, based on an outstanding score of <strong class="text-green-700">400/360 in the LPUNEST entrance examination</strong>. This prestigious scholarship is awarded to only a select few students who meet the stringent <strong class="text-green-700">LPUNEST Cut-off A</strong> criteria, demonstrating exceptional academic merit.</p>
-                        <span class="duration text-slate-500 text-sm mt-2 block">Awarded: 2024</span>
+                        <span class="duration text-slate-500 text-sm mt-2 block">Awarded: 2025</span>
                     </div>
                 </div>
                 <!-- End LPUNEST Scholarship Mention -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content bg-white p-6 rounded-lg shadow-lg border border-blue-200">
+                        <img src="https://placehold.co/80x80/e0f2fe/3b82f6?text=School" alt="St. Anselm's Senior Secondary School Logo" class="education-image mx-auto mb-4">
                         <h3 class="text-xl font-semibold text-blue-600">Class 12th (PCM with Informatics Practices)</h3>
                         <p class="text-slate-600">St. Anselm's Senior Secondary School</p>
                         <p class="text-slate-600"><strong>Overall Percentage: 80%</strong></p>
@@ -693,6 +941,51 @@
                 window.open('https://drive.google.com/drive/u/8/folders/1V2OBlD11tKLA-TIQ-r92cpWsj5CXrmkS', '_blank');
             }
         }
+
+        // Intersection Observer for section animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('skills')) {
+                        entry.target.querySelectorAll('.skill-box').forEach((box, index) => {
+                            setTimeout(() => {
+                                box.classList.add('show');
+                            }, index * 100);
+                        });
+                    } else if (entry.target.classList.contains('education')) {
+                        entry.target.querySelectorAll('.timeline-item').forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('show');
+                            }, index * 150);
+                        });
+                    } else if (entry.target.classList.contains('projects')) {
+                        entry.target.querySelectorAll('.project-box').forEach((box, index) => {
+                            setTimeout(() => {
+                                box.classList.add('show');
+                            }, index * 100);
+                        });
+                    } else if (entry.target.classList.contains('certificates')) {
+                        entry.target.querySelectorAll('.certificate-box').forEach((box, index) => {
+                            setTimeout(() => {
+                                box.classList.add('show');
+                            }, index * 100);
+                        });
+                    }
+                    observer.unobserve(entry.target); // Unobserve once animated
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections that contain animated elements
+        document.querySelectorAll('.skills, .education, .projects, .certificates').forEach(section => {
+            sectionObserver.observe(section);
+        });
     </script>
 </body>
 
